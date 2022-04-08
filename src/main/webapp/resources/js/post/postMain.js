@@ -1,9 +1,13 @@
 
 $(document).ready(function() {
 	
-	
 	let postNo = "";
 	let email = $('#user').attr('value');
+	
+	if(email==="" || email===null || email==="null"){
+		$('.comment').attr('type','hidden');
+		$('.commentbtn').attr('type','hidden');
+	}
 	
 	
 	
@@ -30,10 +34,11 @@ $(document).ready(function() {
             success:function(data){
 				console.log(data);
                 var Citem = "";
-                var userNickname="";
-                var postContent="";
+                
 
-            	let email = data[0].email;
+                var userNick=data[0].userNick;
+            	let userProfileImg = data[0].userProfileImg;
+
             	let likes = data[0].likes;
             	let content = data[0].content;
             	let comment_total = data[0].comments;
@@ -50,14 +55,22 @@ $(document).ready(function() {
                     }
                 }
               
-            	
-				if(heartCheck==0){
-					likes ='<i class="modal-icon fa-regular fa-heart modal-like" data-postno="'+postNo+'"></i>'+
+				if(email!=="" && email!==null && email!=="null"){
+					if(heartCheck==0){
+						likes ='<i class="modal-icon fa-regular fa-heart modal-like" data-postno="'+postNo+'"></i>'+
             			'<span id="likeCount">'+likes+'</span>';
-            	}else{
-					likes ='<i class="modal-icon fa-regular fa-heart modal-like active" data-postno="'+postNo+'"></i>'+
+            		}else{
+						likes ='<i class="modal-icon fa-regular fa-heart modal-like active" data-postno="'+postNo+'"></i>'+
             			'<span id="likeCount">'+likes+'</span>';
-				}
+					}
+                $(".likes").html(likes);
+				}else{
+					likes ='<i class="modal-icon fa-regular fa-heart "></i>'+
+            			'<span id="likeCount">'+likes+'</span>';
+               		 $(".likes").html(likes);
+				}            	
+
+								
 
 				views ='<i class="modal-icon fa-regular fa-eye"></i>'+views;
             	comment_total ='<i class="modal-icon fa-regular fa-comment-dots"></i>'+comment_total;
@@ -66,9 +79,8 @@ $(document).ready(function() {
 
 				//내용 넣는 프로세스
                 $(".Citem").html(Citem);
-                $(".email").html(email);
+                $(".userNick").html(userNick);
                 $(".content").html(content);
-                $(".likes").html(likes);
                 $(".comment_total").html(comment_total);
                 $(".views").html(views);
                 $(".location").html(location);
@@ -182,6 +194,7 @@ $(document).ready(function() {
 			    xhr.setRequestHeader(header, token);
 			    },
 	        success:function(data){
+					console.log(data);
 		           	for(var i=0; i<data.length; i++){
 						comments += '<div class="coment-block row mx-0 my-1 d-flex">';
 		           		for(var y=0; y < data[i].grpl; y++){
@@ -190,10 +203,16 @@ $(document).ready(function() {
 						comments +=	'<div class="profile-img-xxs col-1 px-0">';
 						comments +=	'<div class="img-xxs border"></div>';
 						comments +=	'</div>';
-						comments +=	'<span class="col-3 pl-1" style="font-size: 14px; font-weight: 600;">' + data[i].email + '</span>';
+						comments +=	'<span class="col-3 pl-1" style="font-size: 14px; font-weight: 600;">' + data[i].userNick + '</span>';
 		           		comments += '<span class="col-6 px-0 comment-text" style="font-size: 13px;">'+data[i].content+'</span>';
-						comments += '<span class="replyClick col-1 px-0" data-count="0" style="font-size: 5px; cursor : pointer;">답글</span>';
-						comments += '<i class="fa-solid fa-x deleteRe" style="font-size:5px; color:red; cursor : pointer;" data-no="'+data[i].commentNo+'"></i><br/>';
+						
+						if(email!=="" && email!==null && email!=="null"){
+							comments += '<span class="replyClick col-1 px-0" data-count="0" style="font-size: 5px; cursor : pointer;">답글</span>';
+						}
+						if(email===data[i].email){
+							comments += '<i class="fa-solid fa-x deleteRe" style="font-size:5px; color:red; cursor : pointer;" data-no="'+data[i].commentNo+'"></i><br/>';
+						}
+
 						comments += '<div class="form-group col-12 row mx-0">';
 						comments += '<input type="text" class="col-10 recomment" data-grp="'+data[i].grp+'" data-grpl="'+data[i].grpl+'" data-grps="'+data[i].grps+'">';
 						comments += '<input type="button" class="btn btn-sm btn-outline-success addreplyComment ml-1" role="button" value="전송">';
@@ -203,6 +222,7 @@ $(document).ready(function() {
 		           	}
 		           	
 					$('.comments').html(comments);
+					
 					
 					$('.replyClick').click(function () { //re댓글 작성
 						

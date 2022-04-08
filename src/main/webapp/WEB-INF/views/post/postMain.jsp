@@ -21,9 +21,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/post/postMain.js"></script>
 
+
 <link rel="stylesheet" type="text/css" href="../css/includes/header.css" />
-<link rel="stylesheet" type="text/css" href="../css/search/searchResult.css" />
 <link rel="stylesheet" type="text/css" href="../css/includes/footer.css" />
+<link rel="stylesheet" type="text/css" href="../css/search/searchResult.css" />
 <title>List</title>
 <style>
 ul{
@@ -109,12 +110,14 @@ span.comment-text {
 					</div>
 					<div class="post-bottom border row mx-0">
 						<div class="profile-img-xs col-3 px-0">
-							<div class="img-xs border"></div>
+							<div class="img-xs border">
+								<!-- <img src="../images/${post.userProfileImg}"> -->
+							</div>
 						</div>
 						
 						<div class="info col-9 row mx-0 flex-wrap">
 							<div class="post-nickname col-12 px-0 pt-2">
-							${post.email}
+							${post.userNick}
 							</div>
 						
 							<div class="bottom-likes col-4 px-0">
@@ -178,7 +181,7 @@ span.comment-text {
 						</div>
 						
 						<div class="col-10">
-							<div class="email">
+							<div class="userNick">
 								<!-- 닉네임 -->
 							</div>
 							
@@ -211,7 +214,7 @@ span.comment-text {
 					
 					<li class="list-group-item">
                        	<input type="text" class="comment grpl" placeholder="comment" data-value="0">
-                       	<button type="button" class="btn btn-sm btn-outline-success addcomment ml-1" role="button">전송</button>
+                       	<input type="button" class="btn btn-sm btn-outline-success addcomment ml-1 commentbtn" role="button" value="전송">
 					
 						<div class="comments">
 						</div>

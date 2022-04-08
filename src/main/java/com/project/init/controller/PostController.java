@@ -54,6 +54,26 @@ public class PostController {
 		return "post/postMain";
 	}
 	
+	@RequestMapping("postLike")
+	public String postLike(Model model) {
+		String user = Constant.username;
+		ArrayList<PostDto> list = dao.likeList(user);
+		model.addAttribute("list", list);
+		model.addAttribute("user",Constant.username);
+		System.out.println(Constant.username);
+		return "post/postMain";
+	}
+	
+	@RequestMapping("postView")
+	public String postView(Model model) {
+		String user = Constant.username;
+		ArrayList<PostDto> list = dao.viewList(user);
+		model.addAttribute("list", list);
+		model.addAttribute("user",Constant.username);
+		System.out.println(Constant.username);
+		return "post/postMain";
+	}
+	
 	@RequestMapping("getPost")
 	public String getPost(Model model) {
 		String user = Constant.username;
@@ -113,7 +133,7 @@ public class PostController {
 	public ArrayList<PostDto> getlist(@RequestParam("postNo") String postNo,@RequestParam("email") String email) {
 		PostDto tmp = new PostDto(postNo,email);
 		ArrayList<PostDto> dto = dao.getlist(tmp);
-		
+		System.out.println("dddddddd");
 		return dto;
 	}
 	

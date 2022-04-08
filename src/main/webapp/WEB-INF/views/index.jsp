@@ -21,6 +21,8 @@
 <link rel="stylesheet" type="text/css" href="css/includes/header.css" />
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <link rel="stylesheet" type="text/css" href="css/includes/footer.css" />
+
+
 <title>Index</title>
 
 </head>
@@ -72,37 +74,49 @@
 		</div>
 	</div>
 	
+<!-- 김병선 작업 시작점 ---------------------------------------------->
+	
 	<div class="main-body-bottom mb-3">
+			
 		<div class="recommand recommand-1 mb-2">
 			<div class="recommand-icon text-danger d-flex justify-content-between">
-				<i class="btn1 fa-solid fa-location-arrow"></i>
+				<i class="btn1 fa-brands fa-instagram"></i>
 				<a href="post/postMain" class="text-danger">
 					<i class="btn2 fa-regular fa-circle-right"></i>
 				</a>
 			</div>
-			
 			<div class="posts d-flex justify-content-between mt-2">
-				<c:forEach begin="1" end="4" var="i">
+				<c:forEach items="${post}" var="post" begin="0" end="4" >
 					<div class="post mr-2">
-						<div class="post-top border rounded"></div>
+						<div class="post-top border rounded">
+						post.titleImage = ${post.titleImage}<br/>
+						post.userNick = ${post.userNick}<br/>
+						post.likes = ${post.likes}<br/>
+						post.comments = ${post.comments}<br/>
+						post.views = ${post.views}<br/>
+						</div>
 						<div class="post-bottom border"></div>
 					</div>
 				</c:forEach>
 			</div>
-		</div>
+		</div> 
 		
 		<div class="recommand recommand-2 mb-2">
 			<div class="recommand-icon text-primary d-flex justify-content-between">
 				<i class="btn1 fa-solid fa-users"></i>
-				<a href="search" class="text-primary">
+				<a href="post/postLike" class="text-primary">
 					<i class="btn2 fa-regular fa-circle-right"></i>
 				</a>
-			</div>
-			
+			</div>	
 			<div class="posts d-flex justify-content-between mt-2">
-				<c:forEach begin="1" end="4" var="i">
+				<c:forEach items="${likeList}" var="likeList" begin="0" end="4" >
 					<div class="post mr-2">
-						<div class="post-top border rounded"></div>
+						<div class="post-top border rounded">
+						likeList.titleImage = ${likeList.titleImage}<br/>
+						likeList.userNick = ${likeList.userNick}<br/>
+						likeList.likes = ${likeList.likes}<br/>
+						likeList.comments = ${likeList.comments}<br/>
+						likeList.views = ${likeList.views}<br/></div>
 						<div class="post-bottom border"></div>
 					</div>
 				</c:forEach>
@@ -112,20 +126,26 @@
 		<div class="recommand recommand-3 mb-2">
 			<div class="recommand-icon text-success d-flex justify-content-between">
 				<i class="btn1 fa-solid fa-font-awesome"></i>
-				<a href="search" class="text-success">
+				<a href="post/postView" class="text-success">
 					<i class="btn2 fa-regular fa-circle-right"></i>
 				</a>
 			</div>
-			
 			<div class="posts d-flex justify-content-between mt-2">			
-				<c:forEach begin="1" end="4" var="i">
+				<c:forEach items="${viewList}" var="viewList" begin="0" end="4" >
 					<div class="post mr-2">
-						<div class="post-top border rounded"></div>
+						<div class="post-top border rounded">
+						viewList.titleImage = ${viewList.titleImage}<br/>
+						viewList.userNick = ${viewList.userNick}<br/>
+						viewList.likes = ${viewList.likes}<br/>
+						viewList.comments = ${viewList.comments}<br/>
+						viewList.views = ${viewList.views}<br/></div>
 						<div class="post-bottom border"></div>
 					</div>
 				</c:forEach>
 			</div>
 		</div>
+		
+<!-- 김병선작업 끝 ---------------------------------------------->
 		
 		<div class="recommand recommand-4 mb-2">
 			<div class="recommand-icon text-warning d-flex justify-content-between">
@@ -150,6 +170,8 @@
 <%@ include file="includes/login_modal.jsp" %>
 <%@ include file="includes/post_details.jsp" %>
 <%@ include file="includes/footer.jsp" %>
+
+
 
 <script>
 

@@ -6,10 +6,12 @@ public class PostDto {
 
 	private String postNo;
 	private String email;
+	private String userNick;
 	private String plan;
 	private String titleImage;
 	private String images;
 	private String content;
+	private String userProfileImg;
 	private String hashtag;
 	private Timestamp regDate;
 	private String location;
@@ -50,6 +52,23 @@ public class PostDto {
 	
 	
 	
+
+	public String getUserProfileImg() {
+		return userProfileImg;
+	}
+
+	public void setUserProfileImg(String userProfileImg) {
+		this.userProfileImg = userProfileImg;
+	}
+
+	public String getUserNick() {
+		return userNick;
+	}
+
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
+	}
+
 	public PostDto(String postNo, String email) {
 		super();
 		this.postNo = postNo;

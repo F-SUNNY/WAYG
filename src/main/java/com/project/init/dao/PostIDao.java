@@ -12,6 +12,8 @@ public interface PostIDao {
 
 	public PostDto write(PostDto dto);
 	public ArrayList<PostDto> list(String email);
+	public ArrayList<PostDto> likeList(String email);
+	public ArrayList<PostDto> viewList(String email);
 	public ArrayList<PostDto> getlist(PostDto tmp);
 	public void deleteBoard(String boardNum);
 	public String addLike(PostLikeDto dto);

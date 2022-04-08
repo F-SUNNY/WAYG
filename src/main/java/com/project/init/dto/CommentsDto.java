@@ -9,6 +9,8 @@ public class CommentsDto {
 	private String email;  
 	private String content; 
 	private Timestamp time; 
+	private String userNick;
+	private String userProfileImg;
 	private int likes;
 	private int reply;
 	private int grp;
@@ -61,6 +63,29 @@ public class CommentsDto {
 		this.content = content;
 		this.grpl = grpl;
 	}
+	
+	
+	
+	public String getUserNick() {
+		return userNick;
+	}
+
+
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
+	}
+
+
+	public String getUserProfileImg() {
+		return userProfileImg;
+	}
+
+
+	public void setUserProfileImg(String userProfileImg) {
+		this.userProfileImg = userProfileImg;
+	}
+
+
 	public int getReply() {
 		return reply;
 	}

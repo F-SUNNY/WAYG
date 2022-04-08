@@ -31,6 +31,20 @@ public class PostDao implements PostIDao{
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
+	public ArrayList<PostDto> likeList(String email) {
+		ArrayList<PostDto> list =  (ArrayList)sqlSession.selectList("likeList",email);
+		return list;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public ArrayList<PostDto> viewList(String email) {
+		ArrayList<PostDto> list =  (ArrayList)sqlSession.selectList("viewList",email);
+		return list;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
 	public ArrayList<PostDto> getlist(PostDto tmp) {
 		ArrayList<PostDto> dto = (ArrayList)sqlSession.selectList("getlist",tmp);
 		
