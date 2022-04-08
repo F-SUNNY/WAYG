@@ -22,6 +22,7 @@
 <script src="../js/post/postMain.js"></script>
 
 
+
 <link rel="stylesheet" type="text/css" href="../css/includes/header.css" />
 <link rel="stylesheet" type="text/css" href="../css/includes/footer.css" />
 <link rel="stylesheet" type="text/css" href="../css/search/searchResult.css" />
