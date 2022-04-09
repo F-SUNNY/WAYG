@@ -54,7 +54,14 @@
 				<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
 			</div>
 		</div>
-
+		
+		<!-- 이미지 보이는 박스 -->
+		<div class="imgView">
+			
+		</div>
+		<!-- 이미지 보이는 박스 -->
+		
+		
 		<div class="form-group">
 			<label for="email">Address</label>
 		<input type="text" id="sample5_address" class="form-control" placeholder="Address" readonly>
