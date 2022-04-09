@@ -99,10 +99,8 @@ public class PostController {
 		int views =0;
 		List<MultipartFile> fileList = multi.getFiles("img");
 				
-		//������ �۾��ҽ�
-		//String path = "C:/Fsunny/project_init/src/main/webapp/resources/images/";
-		//�п����� �۾��ҽ�
-		String path = "C:/Users/310-02/git/finalProject/src/main/webapp/resources/images/";
+		String path = "C:/Users/user/git/WAYG/src/main/webapp/resources/images/";
+		//String path = "C:/Users/310-02/git/finalProject/src/main/webapp/resources/images/";
 		
 		for (MultipartFile mf : fileList) {
 			String originalFileName = mf.getOriginalFilename();
@@ -162,11 +160,9 @@ public class PostController {
 		
 		List<MultipartFile> fileList = multi.getFiles("img");
 		
-		//������ �۾��ҽ�
-		//String path = "C:/Fsunny/project_init/src/main/webapp/resources/images/";
-		//�п����� �۾��ҽ�
-		String path = "C:/Users/310-02/git/finalProject/src/main/webapp/resources/images/";
 		
+		String path = "C:/Users/user/git/WAYG/src/main/webapp/resources/images/";
+
 		for (MultipartFile mf : fileList) {
 			String originalFileName = mf.getOriginalFilename();
 			UUID prefix = UUID.randomUUID();

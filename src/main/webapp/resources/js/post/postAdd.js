@@ -2,12 +2,11 @@ $(document).ready(function () {
 	$('.content').keyup(function () {
 		
 		let tmp = $(this).val().length;
-
 		
 		if (tmp != 0 || tmp != '') {
 			 $('.textCount').text(tmp + '/300자');
 		}  
-		if (tmp >= 299) {
+		if (tmp > 299) {
 			tmp.substring(0, 299);
 		};
 		console.log(tmp);
@@ -15,9 +14,9 @@ $(document).ready(function () {
 	
 	
 	$('.hashtag').keyup(function () {
-		let tmp = $(this).val();
-		let count = tmp.split('#').length-1;
-		let hashtag = tmp.split('#');
+		let element = $(this);
+		let count = element.val().split('#').length-1;
+		let hashtag = element.val().split('#');
 		let result = '';
 		if(count>=11){
 			for(let i=0; i<11; i++){
@@ -28,6 +27,8 @@ $(document).ready(function () {
 				result +='#'+hashtag[i];
 				}
 			}
+			alert('해쉬태그는 10개까지만 등록가능합니다\n'+result);
+			element.val(result); 
 		}else{
 			for(let i=0; i<hashtag.length; i++){
 				if(i==0){
@@ -44,16 +45,19 @@ $(document).ready(function () {
 
 
 	$('.img').change(function(){
+		let element = $(this);
 		let arr = $('.img')[0].files;
 		for(var i=0; i<arr.length; i++){
 			if(arr[i].size>5242880){
 				alert(arr[i].name+'의 용량이 5MB를 초과합니다.다시 업로드해주세요.');
-				$('.img').reset();
+				element.val('');
 			}
-			
+		}
+		if(arr.length>10){
+			alert('10장 이상 등록할수 없습니다.\n다시 선택해주세요')
+			element.val('');
 		}
 	});
-
 	
 	
 	
@@ -61,8 +65,8 @@ $(document).ready(function () {
 });
 
 function checkfrm() { 
-	if($('.location').val()==""){
-		alert('장소는 필수입력입니다 ㅜㅜ');
+	if($('.img').val()==''){
+		alert('1장 이상의 사진등록은 필수입니');
 		return false;
 	}else{
 	$('#addForm').submit();
