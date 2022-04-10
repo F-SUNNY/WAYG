@@ -93,7 +93,7 @@ $(document).ready(function () {
 		let arr = $('.img')[0].files;
 		let arr2 =$('.addImg')[0].files;
 		
-		console.log(arr.length+arr2.length);					
+
 		if(arr.length+arr2.length>10){
 			alert('10장 이상 등록할수 없습니다.\n다시 선택해주세요');
 			//파일값 초기화
