@@ -60,6 +60,7 @@
 			
 		</div>
 		<!-- 이미지 보이는 박스 -->
+		<input name="addImg" type="file" class="addImg" multiple="multiple" placeholder="+">
 		
 		
 		<div class="form-group">

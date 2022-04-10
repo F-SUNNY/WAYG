@@ -42,54 +42,84 @@ $(document).ready(function () {
 		$(this).attr('value',result);	
 	});
 	
-
-
-	$('.img').change(function(){
+	/*$('.img').change(function(){
 		let element = $(this);
 		let arr = $('.img')[0].files;
 		let imgView = '';
-		console.log(arr);
+		
+		if(arr.length>10){
+			alert('10장 이상 등록할수 없습니다.\n다시 선택해주세요')
+			element.val('');
+		}
 		for(var i=0; i<arr.length; i++){
 			if(arr[i].size>5242880){
 				alert(arr[i].name+'의 용량이 5MB를 초과합니다.다시 업로드해주세요.');
 				element.val('');
 			}
-			imgView += '<img src="'+URL.createObjectURL(arr[i])+'">'
-					+'<i class="fa-solid fa-x reimg" index="'+i+'"></i>';
-					+'<br/>'
-
-		}
-		if(arr.length>10){
-			alert('10장 이상 등록할수 없습니다.\n다시 선택해주세요')
-			element.val('');
+			
+			imgView +='<img src="'+URL.createObjectURL(arr[i])+'" style="width :300px">'
+			imgView +='<i class="fa-solid fa-x reimg" index="'+i+'"></i>';
+			imgView +='<br/>'
 		}
 		
 		$('.imgView').html(imgView);
-		console.log('change');
-	});
+	});*/
 	
 	$(document).on('click','.reimg',function(){
-			const dataTransfer = new DataTransfer(); 
-			let changeData ="";
-			let arr = $('.img')[0].files;
-			let index = $(this).attr('index');
+		
+		const dataTransfer = new DataTransfer(); 
+		let changeData ="";
+		let arr = $('.img')[0].files;
+		let index = $(this).attr('index');
 			
-			let fileArray = Array.from(arr); //변수에 할당된 파일을 배열로 변환(FileList -> Array) 
-			fileArray.splice(index, 1); //해당하는 index의 파일을 배열에서 제거 
-			fileArray.forEach(file => { dataTransfer.items.add(file); }); //남은 배열을 dataTransfer로 처리(Array -> FileList) 
-			$('.img')[0].files = dataTransfer.files; //제거 처리된 FileList를 돌려줌
+		let fileArray = Array.from(arr); //변수에 할당된 파일을 배열로 변환(FileList -> Array) 
+		fileArray.splice(index, 1); //해당하는 index의 파일을 배열에서 제거 
+		fileArray.forEach(file => { dataTransfer.items.add(file); }); //남은 배열을 dataTransfer로 처리(Array -> FileList) 
+		$('.img')[0].files = dataTransfer.files; //제거 처리된 FileList를 돌려줌
 			
-			changeData = $('.img')[0].files;
-			imgView='';
-			for(var i=0; i<changeData.length; i++){
-				imgView += '<img src="'+URL.createObjectURL(changeData[i])+'">'
-						+'<i class="fa-solid fa-x reimg" index="'+i+'"></i>';
-						+'<br/>'
-			}
-			$('.imgView').html(imgView);
-		console.log('click');
-		});
+		changeData = $('.img')[0].files;
+		imgView='';
+		for(var i=0; i<changeData.length; i++){
+			imgView +='<img src="'+URL.createObjectURL(changeData[i])+'" style="width :300px">'
+			imgView +='<i class="fa-solid fa-x reimg" index="'+i+'"></i>';
+			imgView +='<br/>'
+		}
+		$('.imgView').html(imgView);			
+	});
 	
+	$('.addImg').change(function(){ //파일 추가
+		const dataTransfer = new DataTransfer(); 
+		let arr = $('.img')[0].files;
+		let arr2 =$('.addImg')[0].files;
+		let fileArray = Array.from(arr); //변수에 할당된 파일을 배열로 변환(FileList -> Array) 
+		for(var i=0; i<arr2.length; i++){
+			if(arr2[i].size>5242880){
+				alert(arr2[i].name+'의 용량이 5MB를 초과합니다.\n 다른 이미지를 올려주세요');
+			}else{
+				fileArray.push(arr2[i]);				
+			}
+		}
+		fileArray.forEach(file => { dataTransfer.items.add(file); }); //남은 배열을 dataTransfer로 처리(Array -> FileList) 
+		$('.img')[0].files = dataTransfer.files; 
+		arr = $('.img')[0].files;
+		
+		if(arr.length>10){
+			alert('10장 이상 등록할수 없습니다.\n다시 선택해주세요')
+			//파일값 초기화
+			
+		}
+
+		let imgView='';
+		
+		for(var i=0; i<arr.length; i++){
+			
+			imgView +='<img src="'+URL.createObjectURL(arr[i])+'" style="width :300px">'
+			imgView +='<i class="fa-solid fa-x reimg" index="'+i+'"></i>';
+			imgView +='<br/>'
+		}
+		$('.imgView').html(imgView);	
+		console.log($('.img')[0].files);			
+	});
 	
 	
 });

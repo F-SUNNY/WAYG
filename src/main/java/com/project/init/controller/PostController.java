@@ -98,7 +98,6 @@ public class PostController {
 		String tmp="";
 		int views =0;
 		List<MultipartFile> fileList = multi.getFiles("img");
-		System.out.println("dddddd");
 		String path = "C:/Users/user/git/WAYG/src/main/webapp/resources/images/";
 		for (MultipartFile mf : fileList) {
 			String originalFileName = mf.getOriginalFilename();
@@ -109,6 +108,7 @@ public class PostController {
 				tmp+=prefix + originalFileName+"/";
 			
 			} catch (IllegalStateException | IOException e) {
+				System.out.println("dddddd");
 				e.getMessage(); 
 				System.out.println(e.getMessage());
 			}
