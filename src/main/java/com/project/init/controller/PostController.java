@@ -87,7 +87,7 @@ public class PostController {
 	@RequestMapping("addPost")
 	public String addPost(Model model) {	
 		model.addAttribute("user",Constant.username);
-		System.out.println(Constant.username);
+		System.out.println("=========> addPost");
 		return "post/addPost";
 	}
 	
@@ -108,7 +108,6 @@ public class PostController {
 				tmp+=prefix + originalFileName+"/";
 			
 			} catch (IllegalStateException | IOException e) {
-				System.out.println("dddddd");
 				e.getMessage(); 
 				System.out.println(e.getMessage());
 			}

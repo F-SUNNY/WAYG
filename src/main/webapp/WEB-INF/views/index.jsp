@@ -81,7 +81,7 @@
 		<div class="recommand recommand-1 mb-2">
 			<div class="recommand-icon text-danger d-flex justify-content-between">
 				<i class="btn1 fa-brands fa-instagram"></i>
-				<a href="post/postMain" class="text-danger">
+				<a href="post/addPost" class="text-danger">
 					<i class="btn2 fa-regular fa-circle-right"></i>
 				</a>
 			</div>

@@ -48,19 +48,19 @@
 		</div>
 		
 		<input name="location" type="hidden" class="location" placeholder="location" required>
-		<div class="input-group mb-3">
+		<div class="input-group mb-3" style="display: none;">
 			<div class="custom-file">
-				<input name="img" type="file" class="img custom-file-input" placeholder="img" id="inputGroupFile01" multiple="multiple" required>
+				<input name="img" type="file" class="img custom-file-input" placeholder="img" id="inputGroupFile01" multiple="multiple"  required>
 				<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
 			</div>
 		</div>
 		
 		<!-- 이미지 보이는 박스 -->
-		<div class="imgView">
-			
+		<div class="imgView" style="display: flex; flex-wrap: wrap;">
+			<i class="fa-brands fa-instagram addImgBtn" style="color : red; font-size: 220px;"></i>
 		</div>
 		<!-- 이미지 보이는 박스 -->
-		<input name="addImg" type="file" class="addImg" multiple="multiple" placeholder="+">
+		<input name="addImg" type="file" class="addImg" multiple="multiple" style="display: none;">
 		
 		
 		<div class="form-group">

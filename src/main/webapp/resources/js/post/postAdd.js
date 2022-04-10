@@ -80,10 +80,11 @@ $(document).ready(function () {
 		changeData = $('.img')[0].files;
 		imgView='';
 		for(var i=0; i<changeData.length; i++){
-			imgView +='<img src="'+URL.createObjectURL(changeData[i])+'" style="width :300px">'
+			imgView +='<img src="'+URL.createObjectURL(changeData[i])+'" style="width :23%">'
 			imgView +='<i class="fa-solid fa-x reimg" index="'+i+'"></i>';
 			imgView +='<br/>'
 		}
+			imgView +='<i class="fa-brands fa-instagram addImgBtn" style="color : red; font-size: 220px;"></i>'
 		$('.imgView').html(imgView);			
 	});
 	
@@ -91,37 +92,45 @@ $(document).ready(function () {
 		const dataTransfer = new DataTransfer(); 
 		let arr = $('.img')[0].files;
 		let arr2 =$('.addImg')[0].files;
-		let fileArray = Array.from(arr); //변수에 할당된 파일을 배열로 변환(FileList -> Array) 
-		for(var i=0; i<arr2.length; i++){
-			if(arr2[i].size>5242880){
-				alert(arr2[i].name+'의 용량이 5MB를 초과합니다.\n 다른 이미지를 올려주세요');
-			}else{
-				fileArray.push(arr2[i]);				
-			}
-		}
-		fileArray.forEach(file => { dataTransfer.items.add(file); }); //남은 배열을 dataTransfer로 처리(Array -> FileList) 
-		$('.img')[0].files = dataTransfer.files; 
-		arr = $('.img')[0].files;
 		
-		if(arr.length>10){
-			alert('10장 이상 등록할수 없습니다.\n다시 선택해주세요')
+		console.log(arr.length+arr2.length);					
+		if(arr.length+arr2.length>10){
+			alert('10장 이상 등록할수 없습니다.\n다시 선택해주세요');
 			//파일값 초기화
 			
+		}else{
+			let fileArray = Array.from(arr); //변수에 할당된 파일을 배열로 변환(FileList -> Array) 
+			for(var i=0; i<arr2.length; i++){
+				if(arr2[i].size>5242880){
+					alert(arr2[i].name+'의 용량이 5MB를 초과합니다.\n 다른 이미지를 올려주세요');
+				}else{
+					fileArray.push(arr2[i]);				
+				}
+			}
+			fileArray.forEach(file => { dataTransfer.items.add(file); }); //남은 배열을 dataTransfer로 처리(Array -> FileList) 
+			$('.img')[0].files = dataTransfer.files; 
+			arr = $('.img')[0].files;
+			
 		}
+		
 
 		let imgView='';
 		
 		for(var i=0; i<arr.length; i++){
 			
-			imgView +='<img src="'+URL.createObjectURL(arr[i])+'" style="width :300px">'
+			imgView +='<img src="'+URL.createObjectURL(arr[i])+'" style="width :23%">'
 			imgView +='<i class="fa-solid fa-x reimg" index="'+i+'"></i>';
 			imgView +='<br/>'
 		}
+		if(arr.length<10){
+			imgView +='<i class="fa-brands fa-instagram addImgBtn" style="color : red; font-size: 220px;"></i>'			
+		}
 		$('.imgView').html(imgView);	
-		console.log($('.img')[0].files);			
 	});
 	
-	
+	$(document).on('click','.addImgBtn',function(){
+		$('input[name=addImg]').trigger('click');
+	})
 });
 
 function checkfrm() { 
