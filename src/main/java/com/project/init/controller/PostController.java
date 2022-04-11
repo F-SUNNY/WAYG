@@ -98,7 +98,8 @@ public class PostController {
 		String tmp="";
 		int views =0;
 		List<MultipartFile> fileList = multi.getFiles("img");
-		String path = "C:/Users/user/git/WAYG/src/main/webapp/resources/images/";
+		String path = "C:/Users/310-02/git/WAYG/src/main/webapp/resources/images/";
+		
 		for (MultipartFile mf : fileList) {
 			String originalFileName = mf.getOriginalFilename();
 			UUID prefix = UUID.randomUUID();
