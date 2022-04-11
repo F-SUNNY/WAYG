@@ -18,6 +18,13 @@ $(document).ready(function () {
 		let count = element.val().split('#').length-1;
 		let hashtag = element.val().split('#');
 		let result = '';
+		let hashCheck =element.val().substr(0,1);
+
+		if(hashCheck !=='#'){
+			alert('해쉬태그는 #을 붙여주세요! ');
+			element.val('#');
+		}
+		
 		if(count>=11){
 			for(let i=0; i<11; i++){
 				if(i==0){
@@ -31,39 +38,25 @@ $(document).ready(function () {
 			element.val(result); 
 		}else{
 			for(let i=0; i<hashtag.length; i++){
+				element.val(element.val().replaceAll(/##/gi, "#")); 
+		
+				if(hashtag[i]!='' && hashtag[i].replaceAll(' ','')==''){
+					element.val(result+'#'); 	
+				}
+				
 				if(i==0){
 					result=hashtag[0];
+				
 				}else{
-				result +='#'+hashtag[i];									
+					result +='#'+hashtag[i];									
 				}
+			
 			}
 		}	
+			console.log(result);
 		
-		$(this).attr('value',result);	
+		$(this).attr('value',result);
 	});
-	
-	/*$('.img').change(function(){
-		let element = $(this);
-		let arr = $('.img')[0].files;
-		let imgView = '';
-		
-		if(arr.length>10){
-			alert('10장 이상 등록할수 없습니다.\n다시 선택해주세요')
-			element.val('');
-		}
-		for(var i=0; i<arr.length; i++){
-			if(arr[i].size>5242880){
-				alert(arr[i].name+'의 용량이 5MB를 초과합니다.다시 업로드해주세요.');
-				element.val('');
-			}
-			
-			imgView +='<img src="'+URL.createObjectURL(arr[i])+'" style="width :300px">'
-			imgView +='<i class="fa-solid fa-x reimg" index="'+i+'"></i>';
-			imgView +='<br/>'
-		}
-		
-		$('.imgView').html(imgView);
-	});*/
 	
 	$(document).on('click','.reimg',function(){
 		
@@ -96,29 +89,39 @@ $(document).ready(function () {
 		const dataTransfer = new DataTransfer(); 
 		let arr = $('.img')[0].files;
 		let arr2 =$('.addImg')[0].files;
-		
+		let extension =''; //확장자
 		let totalSize = 0;
 		
-		console.log(totalSize);
+	
+		
+		for(var i=0; i<arr.length; i++){ //사진 용량 확인 1
+			totalSize+=arr[i].size;
+		}
+		
+		for(var i=0; i<arr2.length; i++){ //사진 용량 확인 1
+			totalSize+=arr2[i].size;		
+			
+		}
 		
 		if(arr.length+arr2.length>10){
 			alert('10장 이상 등록할수 없습니다.\n다시 선택해주세요');
-			//파일값 초기화
-			for(var i=0; i<arr.length; i++){
-				totalSize+=arr[i].size;
-			}
-			for(var i=0; i<arr2.length; i++){
-				totalSize+=arr2[i].size;		
-			}
+			//파일값 초기화			
 			
-			if(totalSize>100000000-1){
-				alert('이미지의 총 용량이 10MB를 초과합니다.\n 다른 이미지를 올려주세요');
-			}
+		}else if (totalSize>100000000-1){
+			alert('이미지의 총 용량이 10MB를 초과합니다.\n 다른 이미지를 올려주세요');
 			
-		}else {
+		}else{
 			let fileArray = Array.from(arr); //변수에 할당된 파일을 배열로 변환(FileList -> Array) 
+			
 			for(var i=0; i<arr2.length; i++){				
-				fileArray.push(arr2[i]);				
+				extension = arr2[i].name.substring(arr2[i].name.lastIndexOf('.')+1).toLowerCase(); //확장자명 추출
+
+				if(extension =='jpg' || extension =='jpeg' || extension =='png' || extension ==''){	//확장자 확인		
+					fileArray.push(arr2[i]);				
+				
+				}else{
+					alert(arr2[i].name+'은 지원하지 않은 확장자 파일입니다.');
+				}
 			}
 			
 			fileArray.forEach(file => { dataTransfer.items.add(file); }); //남은 배열을 dataTransfer로 처리(Array -> FileList) 

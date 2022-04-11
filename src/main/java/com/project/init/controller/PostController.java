@@ -145,8 +145,16 @@ public class PostController {
 		String postNo = request.getParameter("postNo");
 		ArrayList<PostDto> list =dao.modifyList(postNo);
 		
+		String images = list.get(0).getImages();
+		String imagesArr[] = images.split("/");
+		
+		for(int i=0; i<imagesArr.length; i++)
+		{
+			System.out.println(imagesArr[i]);
+		}
+		
 		model.addAttribute("list", list);
-		return "modify";
+		return "post/modify";
 	}
 	
 	@RequestMapping(value = "modifyExcute.do", method = { RequestMethod.POST })

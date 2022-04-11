@@ -30,6 +30,8 @@
 <title>List</title>
 </head>
 <body>
+<c:forEach var="list" items="${list}">
+
 <%@ include file="../includes/header.jsp" %>
  <br/><br/>
  <section class="container mt-6 pt-1" style="margin: 200px, 0;">
@@ -39,15 +41,14 @@
 		<div class="form-group">
 			<h2>CONTENT</h2>
 			<h4 class="textCount">0/300자</h4>
-			<textarea class="form-control col-sm-5 content" maxlength="300" name="content" rows="10" cols="20" placeholder="content" required></textarea>
+			<textarea class="form-control col-sm-5 content" maxlength="300" name="content" rows="10" cols="20" placeholder="content" required>${list.content}</textarea>
 		</div>
 		
 		<div class="form-group">
 			<label for="hashtag">#HASHTAG</label>
-			<input name="hashtag" type="text" class="title form-control hashtag" value="#" placeholder="#HASHTAG" required>
+			<input name="hashtag" type="text" class="title form-control hashtag" value="${list.hashtag}" placeholder="#HASHTAG" required>
 		</div>
 		
-		<input name="location" type="hidden" class="location" placeholder="location" required>
 		<div class="input-group mb-3" style="display: none;">
 			<div class="custom-file">
 				<input name="img" type="file" class="img custom-file-input" placeholder="img" id="inputGroupFile01" multiple="multiple"  required>
@@ -63,17 +64,9 @@
 		<input name="addImg" type="file" class="addImg" multiple="multiple" style="display: none;">
 		
 		
-		<div class="form-group">
-			<label for="email">Address</label>
-		<input type="text" id="sample5_address" class="form-control" placeholder="Address" readonly>
-		</div>
-		<input type="button" class="btn btn-outline-primary  btn-block"  onclick="sample5_execDaumPostcode()" value="Search my location"/><br>
-		<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div><br/>
-        <input type="button" class="btn btn-outline-success" onclick="checkfrm()" value="등록"/><hr/>
 	</form>
 </section>
 <%@ include file="../includes/footer.jsp" %>
-
-
+</c:forEach>
 </body>
 </html>
