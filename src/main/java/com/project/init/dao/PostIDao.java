@@ -6,6 +6,7 @@ import com.project.init.dto.CommentsDto;
 import com.project.init.dto.PostDto;
 import com.project.init.dto.PostLikeDto;
 import com.project.init.dto.PostViewDto;
+import com.project.init.dto.SearchDto;
 
 
 public interface PostIDao {
@@ -24,6 +25,10 @@ public interface PostIDao {
 	public void addReplyComments(CommentsDto dto);
 	public void deleteReplyComments(String commentNo);
 	public ArrayList<CommentsDto> getcomments(String postNo);
-	public ArrayList<PostDto> search(String keyword,String searchVal);
+
+	
+	
+	
+	public ArrayList<PostDto> search(SearchDto dto);
 	
 }

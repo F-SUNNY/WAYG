@@ -8,6 +8,8 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,7 @@ import com.project.init.dto.CommentsDto;
 import com.project.init.dto.PostDto;
 import com.project.init.dto.PostLikeDto;
 import com.project.init.dto.PostViewDto;
+import com.project.init.dto.SearchDto;
 import com.project.init.util.Constant;
 
 
@@ -30,6 +33,9 @@ import com.project.init.util.Constant;
 @RequestMapping("/post")
 
 public class PostController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(PostController.class);
+
 	@Autowired
 	private PostDao dao;
 	
@@ -216,14 +222,17 @@ public class PostController {
 		return dto;
 	}
 	
-	@RequestMapping("searchPage")
-	public String searchPage(HttpServletRequest request, Model model) {
+	@RequestMapping("search")
+	public String search(HttpServletRequest request, Model model) {
+		logger.info("search() in >>>>");
+
 		String keyword = request.getParameter("keyword");
 		String searchVal = request.getParameter("searchVal");
-		ArrayList<PostDto> list = dao.search(keyword,searchVal);
+		SearchDto dto = new SearchDto(keyword, searchVal);
+		ArrayList<PostDto> list = dao.search(dto);
 		model.addAttribute("list", list);
 		
-		return "postMain";
+		return "post/postMain";
 	}
 
 	@ResponseBody

@@ -12,6 +12,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="js/includes/header.js"></script>
+
 <title>header</title>
 </head>
 
@@ -27,16 +30,16 @@
 		<div>
 			<div class="input-group border rounded bg-light">
 		    	<div class="input-group-btn">
-		    		<button type="button" class="btn btn-default mr-1">filter</button>
+		    		<button type="button" class="btn btn-default mr-1 keywordView">keyword</button>
 		        	<button type="button" class="btn btn-default dropdown-toggle mr-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
 		        	<ul class="dropdown-menu">
-		          		<li>filter 1</li>
-		          		<li>filter 2</li>
-		          		<li>filter 3</li>
+		          		<li class="keyword" value="NickName">NickName</li>
+		          		<li class="keyword" value="Location">Location</li>
+		          		<li class="keyword" value="Hashtag">Hashtag</li>
 		        	</ul>
 		      	</div>
-		      	<input type="text" class="form-control bg-light mr-1" size="30" aria-label="000" placeholder="search...">
-	    		<a href="search" class="btn btn-default mr-1"><i class="fa-brands fa-sistrix"></i></a>	      	
+		      	<input type="text" class="form-control bg-light mr-1 searchVal" size="30" aria-label="000" placeholder="search...">
+	    		<a href="#" class="btn btn-default mr-1 search"><i class="fa-brands fa-sistrix"></i></a>	      	
 		    </div>
 		</div>
 		
@@ -78,14 +81,6 @@
 		
 	</div>
 			
-<script>
-$(document).ready(function(){
-	$('#anFeed').click(function(e){
-		e.preventDefault();
-		$('#loginModalBtn').trigger('click');
-	});
-});
-</script>
 </nav>
 </body>
 </html>

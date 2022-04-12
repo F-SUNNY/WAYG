@@ -48,7 +48,11 @@ public class PostDto {
 		this.hashtag = hashtag;		
 	}
 	
-	
+	public PostDto(String postNo, String email) {
+		super();
+		this.postNo = postNo;
+		this.email = email;
+	}
 	
 
 	public String getUserProfileImg() {
@@ -67,11 +71,7 @@ public class PostDto {
 		this.userNick = userNick;
 	}
 
-	public PostDto(String postNo, String email) {
-		super();
-		this.postNo = postNo;
-		this.email = email;
-	}
+	
 
 	public int getHeartCheck() {
 		return heartCheck;

@@ -149,23 +149,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        FROM COMMENTS WHERE POSTNO= #{postNo} ORDER BY GRP DESC, GRPS ASC
    </select>
 
-	<!-- 검색어 필터 /작성자 -->
-   <select id="searchWriter" parameterType="String" resultType="com.project.init.dto.PostDto">
-      SELECT * FROM POST WHERE EMAIL LIKE '%'||#{keyword}||'%'   
-   </select>
-   
-	<!-- 검색어 필터 /내용 -->
-   <select id="searchContent" parameterType="String" resultType="com.project.init.dto.PostDto">
-      SELECT * FROM POST WHERE CONTENT LIKE '%'||#{keyword}||'%'       
-   </select>
-
-	<!-- 검색어 필터 /장소 -->
-   <select id="searchLocation" parameterType="String" resultType="com.project.init.dto.PostDto">      
-      SELECT * FROM POST WHERE LOCATION LIKE '%'||#{keyword}||'%'
-   </select>
 	<!-- 검색어 필터 /해시태그 -->
-   <select id="searchHashtag" parameterType="String" resultType="com.project.init.dto.PostDto">
-      SELECT * FROM POST WHERE HASHTAG LIKE '%'||#{keyword}||'%' 
+   <select id="search" parameterType="com.project.init.dto.SearchDto" resultType="com.project.init.dto.PostDto">
+      SELECT * FROM POST WHERE ${keyword} LIKE '%'||#{searchVal}||'%' 
    </select>
    
    <update id="beforeAddReply" parameterType="com.project.init.dto.CommentsDto" >

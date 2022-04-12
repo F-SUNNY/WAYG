@@ -9,6 +9,7 @@ import com.project.init.dto.CommentsDto;
 import com.project.init.dto.PostDto;
 import com.project.init.dto.PostLikeDto;
 import com.project.init.dto.PostViewDto;
+import com.project.init.dto.SearchDto;
 
 
 public class PostDao implements PostIDao{
@@ -91,27 +92,13 @@ public class PostDao implements PostIDao{
 		
 		return dto;
 	}
+	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public ArrayList<PostDto> search(String keyword, String searchVal) {
-		ArrayList<PostDto> dto = new ArrayList<PostDto>();
+	public ArrayList<PostDto> search(SearchDto dto) {
+		ArrayList<PostDto> dtos =(ArrayList)sqlSession.selectList("search", dto);
 		
-		if(searchVal.equals("writer")) {
-			dto = (ArrayList)sqlSession.selectList("searchWriter", keyword);
-			return dto;
-		}else if(searchVal.equals("content")) {
-			dto = (ArrayList)sqlSession.selectList("searchContent", keyword);
-			return dto;
-		}
-		else if(searchVal.equals("location")) {
-			dto = (ArrayList)sqlSession.selectList("searchLocation", keyword);
-			return dto;
-		}else {
-			dto = (ArrayList)sqlSession.selectList("searchHashtag", keyword);			
-			return dto;
-		}
-		
-		
+		return dtos;
 	}
 
 	@Override
