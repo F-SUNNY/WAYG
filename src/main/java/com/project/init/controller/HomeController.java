@@ -39,9 +39,6 @@ public class HomeController {
 		return "index";
 	}
 	
-	
-	//김병선 작업 끝 -----------------------------------
-	
 	@RequestMapping("/join")
 	public String join() {
 		logger.info("index() in >>>>");

@@ -77,7 +77,7 @@
 <!-- 김병선 작업 시작점 ---------------------------------------------->
 	
 	<div class="main-body-bottom mb-3">
-			
+		<a href="error/404page" class="text-danger">404 작업장</a>
 		<div class="recommand recommand-1 mb-2">
 			<div class="recommand-icon text-danger d-flex justify-content-between">
 				<i class="btn1 fa-brands fa-instagram"></i>

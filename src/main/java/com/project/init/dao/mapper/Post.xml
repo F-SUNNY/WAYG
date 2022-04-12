@@ -150,9 +150,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
 
 	<!-- 검색어 필터 /해시태그 -->
-   <select id="search" parameterType="com.project.init.dto.SearchDto" resultType="com.project.init.dto.PostDto">
-      SELECT * FROM POST WHERE ${keyword} LIKE '%'||#{searchVal}||'%' 
+   <select id="searchHashtag" parameterType="com.project.init.dto.SearchDto" resultType="com.project.init.dto.PostDto">
+      SELECT * FROM POST WHERE Hashtag LIKE '%'||#{searchVal}||'%' 
    </select>
+
+   <select id="searchNickName" parameterType="com.project.init.dto.SearchDto" resultType="com.project.init.dto.PostDto">
+		SELECT * FROM POST 
+		WHERE 
+		Email = (SELECT userEmail FROM UserInfo 
+				 WHERE 
+				 userNick LIKE '%'||#{searchVal}||'%') 
+   </select>
+   
+   <!--  <select id="checkLocation" parameterType="com.project.init.dto.SearchDto" resultType="String">
+		DISTINCT SELECT POSTNO FROM post_dt WHERE location LIKE '%'||#{searchVal}||'%'
+   </select>
+   
+   <select id="selectList" parameterType="java.util.ArrayList" resultType="test.vo">
+   		 SELECT * FROM POST
+   		  WHERE POSTNO =  
+        <foreach collection="list" item="arr" open="(" close=")" separator=",">
+            ${arr}
+        </foreach>
+    
+   </select>-->
+
+
+
    
    <update id="beforeAddReply" parameterType="com.project.init.dto.CommentsDto" >
       <![CDATA[

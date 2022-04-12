@@ -1,6 +1,7 @@
 package com.project.init.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,9 +97,28 @@ public class PostDao implements PostIDao{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public ArrayList<PostDto> search(SearchDto dto) {
-		ArrayList<PostDto> dtos =(ArrayList)sqlSession.selectList("search", dto);
 		
-		return dtos;
+		
+		String keyword =dto.getKeyword();
+		
+		if(keyword.equals("Hashtag")) {
+			ArrayList<PostDto> dtos =(ArrayList)sqlSession.selectList("searchHashtag", dto);			
+			return dtos;
+		}else {
+			ArrayList<PostDto> dtos =(ArrayList)sqlSession.selectList("searchNickName", dto);			
+			return dtos;
+			}
+//		}else if(keyword.equals("NickName")) {
+//			ArrayList<PostDto> dtos =(ArrayList)sqlSession.selectList("searchNickName", dto);			
+//			return dtos;	
+			
+//		}else{
+//			ArrayList<String> arr =(ArrayList) sqlSession.selectList("checkLocation", dto);
+//			ArrayList<PostDto> dtos =(ArrayList)sqlSession.selectList("searchLocation", arr);			
+//			return dtos;	
+//			
+//		}
+		
 	}
 
 	@Override
