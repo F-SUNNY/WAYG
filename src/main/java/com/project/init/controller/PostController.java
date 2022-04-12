@@ -143,31 +143,22 @@ public class PostController {
 	@RequestMapping("modify")
 	public String modify(HttpServletRequest request,Model model) {
 		String postNo = request.getParameter("postNo");
-		ArrayList<PostDto> list =dao.modifyList(postNo);
-		
-		String images = list.get(0).getImages();
-		String imagesArr[] = images.split("/");
-		
-		for(int i=0; i<imagesArr.length; i++)
-		{
-			System.out.println(imagesArr[i]);
-		}
-		
+		ArrayList<PostDto> list =dao.modifyList(postNo);		
 		model.addAttribute("list", list);
 		return "post/modify";
 	}
 	
 	@RequestMapping(value = "modifyExcute.do", method = { RequestMethod.POST })
 	public String modifyExcute(MultipartHttpServletRequest multi, Model model) {
-		String images = "";
 		String titleImage="";
 		String tmp="";
-
+		String images = multi.getParameter("images");
+		System.out.println(images);
 		
 		List<MultipartFile> fileList = multi.getFiles("img");
 		
 		
-		String path = "C:/Users/user/git/WAYG/src/main/webapp/resources/images/";
+		String path = "C:/Users/310-02/git/WAYG/src/main/webapp/resources/images/";
 
 		for (MultipartFile mf : fileList) {
 			String originalFileName = mf.getOriginalFilename();
@@ -180,13 +171,14 @@ public class PostController {
 				e.getMessage(); 
 			}
 		}
-		images = tmp;
+		images += tmp;
+		System.out.println(images);
 		String[] test =  images.split("/");
 		titleImage = test[0];
 		
-		PostDto dto = new PostDto(multi.getParameter("postNo"),multi.getParameter("content"),multi.getParameter("hashtag"),multi.getParameter("location"),titleImage,images);
+		PostDto dto = new PostDto(multi.getParameter("postNo"),multi.getParameter("content"),multi.getParameter("hashtag"),titleImage,images);
 		dao.modifyExcute(dto);
-		return "redirect:list";
+		return "redirect:postMain";
 	}
 	
 	@ResponseBody

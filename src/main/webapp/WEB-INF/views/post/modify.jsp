@@ -23,7 +23,7 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=94ef81dc370b9f961476a1859364f709&libraries=services"></script>
 
-<script src="../js/post/postAdd.js"></script>
+<script src="../js/post/modify.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/includes/header.css" />
 <link rel="stylesheet" type="text/css" href="../css/search/searchResult.css" />
 <link rel="stylesheet" type="text/css" href="../css/includes/footer.css" />
@@ -35,7 +35,7 @@
 <%@ include file="../includes/header.jsp" %>
  <br/><br/>
  <section class="container mt-6 pt-1" style="margin: 200px, 0;">
-	<form id="addForm" action="uploadMulti?${_csrf.parameterName}=${_csrf.token }" method="post" enctype="multipart/form-data">
+	<form action="modifyExcute.do?postNo=${list.postNo}&${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
 		<input type="hidden" name="email" value="${user}"/>		
 		<div class="form-group">
@@ -56,14 +56,19 @@
 			</div>
 		</div>
 		
-		<!-- 이미지 보이는 박스 -->
-		<div class="imgView" style="display: flex; flex-wrap: wrap;">
-			<i class="fa-brands fa-instagram addImgBtn" style="color : red; font-size: 220px;"></i>
-		</div>
-		<!-- 이미지 보이는 박스 -->
+		<div class="beforeImg" style="display: flex; flex-wrap: wrap;">
+      
+     	</div>
+
+	    <div class="imgView" style="display: flex; flex-wrap: wrap;">
+	    
+	    	<i class="fa-brands fa-instagram addImgBtn" style="color : red; font-size: 220px;"></i>
+	    </div>
+
 		<input name="addImg" type="file" class="addImg" multiple="multiple" style="display: none;">
-		
-		
+		<input name="images" type="text" class=" form-control images" value="${list.images}">
+    	<input name="deleteImg" type="text" class=" form-control deleteImg" >
+		<input type="submit" value="ㄱㄱ">
 	</form>
 </section>
 <%@ include file="../includes/footer.jsp" %>

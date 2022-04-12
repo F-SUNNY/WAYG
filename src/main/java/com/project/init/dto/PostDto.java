@@ -39,15 +39,13 @@ public class PostDto {
 		
 	}
 
-	public PostDto(String postNo,String content,String hashtag,String location,String titleImage,String images) {
+	public PostDto(String postNo,String content,String hashtag,String titleImage,String images) {
 		super();
 		this.postNo = postNo;
 		this.titleImage = titleImage;
 		this.images = images;
 		this.content = content;
-		this.location = location;
-		this.hashtag = hashtag;
-		
+		this.hashtag = hashtag;		
 	}
 	
 	
