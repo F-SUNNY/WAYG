@@ -51,7 +51,8 @@ a{
 <%@ include file="../includes/header.jsp" %>
 <section class="container mb-4 ">
 	<div class="pageDiv">
-		<a href="/init"><img class="errorImg" src="/init/images/500page.png"></a>
+		<img class="errorImg" src="/init/images/nullpage.png"><br/>
+				
 	</div>
 
 </section>

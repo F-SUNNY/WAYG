@@ -28,12 +28,12 @@ $(document).ready(function () {
       beforeImg ='';
       images ='';
       for(var i=0; i<arrImages.length-1; i++){
-         beforeImg +='<img src="../images/'+arrImages[i]+'" style="width :23%">';
-         beforeImg +='<i class="fa-solid fa-x rebefore" index="'+i+'"></i>';
-         beforeImg +='<br/>';
+        	beforeImg +='<img src="../images/'+arrImages[i]+'" style="width :23%">';
+        	beforeImg +='<i class="fa-solid fa-x rebefore" index="'+i+'"></i>';
+       		beforeImg +='<br/>';
          
-         images+=arrImages[i]+'/';
-      }
+       		images+=arrImages[i]+'/';
+     	}
       
       console.log(images);
       $('.beforeImg').html(beforeImg);

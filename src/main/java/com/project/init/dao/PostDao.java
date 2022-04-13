@@ -104,20 +104,17 @@ public class PostDao implements PostIDao{
 		if(keyword.equals("Hashtag")) {
 			ArrayList<PostDto> dtos =(ArrayList)sqlSession.selectList("searchHashtag", dto);			
 			return dtos;
-		}else {
-			ArrayList<PostDto> dtos =(ArrayList)sqlSession.selectList("searchNickName", dto);			
-			return dtos;
-			}
-//		}else if(keyword.equals("NickName")) {
-//			ArrayList<PostDto> dtos =(ArrayList)sqlSession.selectList("searchNickName", dto);			
-//			return dtos;	
+		}else if(keyword.equals("NickName")) {			
+			ArrayList<String> arr =(ArrayList) sqlSession.selectList("checkNickName", dto);
+			ArrayList<PostDto> dtos =(ArrayList)sqlSession.selectList("searchNickName", arr);			
+			return dtos;	
 			
-//		}else{
-//			ArrayList<String> arr =(ArrayList) sqlSession.selectList("checkLocation", dto);
-//			ArrayList<PostDto> dtos =(ArrayList)sqlSession.selectList("searchLocation", arr);			
-//			return dtos;	
-//			
-//		}
+		}else{
+			ArrayList<String> arr =(ArrayList) sqlSession.selectList("checkLocation", dto);
+			ArrayList<PostDto> dtos =(ArrayList)sqlSession.selectList("searchLocation", arr);			
+			return dtos;	
+			
+		}
 		
 	}
 

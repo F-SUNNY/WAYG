@@ -230,6 +230,9 @@ public class PostController {
 		String searchVal = request.getParameter("searchVal");
 		SearchDto dto = new SearchDto(keyword, searchVal);
 		ArrayList<PostDto> list = dao.search(dto);
+		if(list.size()==0) {
+			return "post/nullPage";			
+		}
 		model.addAttribute("list", list);
 		
 		return "post/postMain";

@@ -17,8 +17,15 @@ public class ErrorController {
 	
 	@RequestMapping("404page")
 	public String page404() {
-		logger.info("error() in >>>>");
+		logger.info("404page() in >>>>");
 		return "error/404page";
+	}
+
+	
+	@RequestMapping("500page")
+	public String page500() {
+		logger.info("500page() in >>>>");
+		return "error/500page";
 	}
 		
 	

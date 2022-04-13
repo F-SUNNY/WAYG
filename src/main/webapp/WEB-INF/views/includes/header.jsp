@@ -13,8 +13,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="js/includes/header.js"></script>
-
 <title>header</title>
 </head>
 
@@ -82,5 +80,44 @@
 	</div>
 			
 </nav>
+<script type="text/javascript">
+$(document).ready(function(){
+	let keyword = '';
+	let searchVal = '';
+	
+	
+	$('#anFeed').click(function(e){
+		e.preventDefault();
+		$('#loginModalBtn').trigger('click');
+	});
+	
+	$('.keyword').click(function () {
+
+		$('.keywordView').text($(this).attr('value'));
+		keyword = $(this).attr('value');
+		
+	});
+	
+	$('.search').click(function () {
+		
+		searchVal = $('.searchVal').val();
+
+
+		if(keyword==''){
+			alert('검색하실 키워드를 선택해주세요 ! ')
+			
+		}else if(searchVal==''){
+			alert('검색어를 입려해주세요 ! ')
+
+		}else{
+			$(this).attr('href','/init/post/search?keyword='+keyword+'&searchVal='+searchVal);
+			
+	
+		}
+	});
+	
+	
+});
+</script>
 </body>
 </html>

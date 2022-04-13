@@ -18,19 +18,29 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/includes/header.css" />
-<link rel="stylesheet" type="text/css" href="../css/main.css" />
-<link rel="stylesheet" type="text/css" href="../css/includes/footer.css" />
+<link rel="stylesheet" type="text/css" href="/init/css/includes/header.css" />
+<link rel="stylesheet" type="text/css" href="/init/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/init/css/includes/footer.css" />
 
 <style type="text/css">
 .pageDiv{
 	text-align: center;
-	padding: 5% 0;
+
 }
 .notice{
 	margin-top: 5%;
 	font-family: cursive;
 }
+.errorImg{
+	width: 60%;
+}
+.errorHome{
+	font-size: 300%;
+}
+a{
+	color: black;
+}
+
 </style>
 <title>Index</title>
 
@@ -41,8 +51,7 @@
 <%@ include file="../includes/header.jsp" %>
 <section class="container mb-4 ">
 	<div class="pageDiv">
-		<img src="../images/user1.jpg">
-		<h1 class="notice">이상한 곳으로 들어오셨네요?</h1>
+		<a href="/init"><img class="errorImg" src="/init/images/404page.png"></a>
 	</div>
 
 </section>
