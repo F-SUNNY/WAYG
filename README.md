@@ -1,5 +1,7 @@
 # WAYG
 [WAYG.pdf](https://github.com/F-SUNNY/WAYG/files/8501062/WAYG.pdf)
+<br/>
+<br/>
 ![슬라이드1](https://user-images.githubusercontent.com/96336832/163702516-e5e384e9-1477-4836-8b61-e8ce353da26c.PNG)
 ![슬라이드2](https://user-images.githubusercontent.com/96336832/163702518-f01aacbe-d66f-4695-9d3d-88f836ecfdfa.PNG)
 ![슬라이드3](https://user-images.githubusercontent.com/96336832/163702519-67d5b3ef-0f66-4eb4-9f5e-04e1f9180145.PNG)
